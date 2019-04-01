@@ -43,7 +43,7 @@ namespace Skoruba.IdentityServer4.STS.Identity.Helpers
                         new CultureInfo("zh")
                     };
 
-                    opts.DefaultRequestCulture = new RequestCulture("en");
+                    opts.DefaultRequestCulture = new RequestCulture("zh");
                     opts.SupportedCultures = supportedCultures;
                     opts.SupportedUICultures = supportedCultures;
                 });
@@ -86,11 +86,11 @@ namespace Skoruba.IdentityServer4.STS.Identity.Helpers
                 .AddAspNetIdentity<TUserIdentity>()
                 .AddConfigurationStore(options =>
                 {
-                    options.ConfigureDbContext = b => b.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
+                    options.ConfigureDbContext = b => b.UseMySql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
                 })
                 .AddOperationalStore(options =>
                 {
-                    options.ConfigureDbContext = b => b.UseSqlServer(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
+                    options.ConfigureDbContext = b => b.UseMySql(connectionString, sql => sql.MigrationsAssembly(migrationsAssembly));
                     options.EnableTokenCleanup = true;
 #if DEBUG
                     options.TokenCleanupInterval = 15;
@@ -104,7 +104,7 @@ namespace Skoruba.IdentityServer4.STS.Identity.Helpers
         public static void AddDbContexts<TContext>(this IServiceCollection services, IConfiguration configuration) where TContext : DbContext
         {
             var connectionString = configuration.GetConnectionString(ConfigurationConsts.AdminConnectionStringKey);
-            services.AddDbContext<TContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<TContext>(options => options.UseMySql(connectionString));
         }
 
         public static void UseMvcLocalizationServices(this IApplicationBuilder app)
