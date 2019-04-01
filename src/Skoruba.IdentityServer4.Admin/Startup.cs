@@ -11,6 +11,7 @@ using Skoruba.IdentityServer4.Admin.Configuration.Interfaces;
 using Skoruba.IdentityServer4.Admin.EntityFramework.DbContexts;
 using Skoruba.IdentityServer4.Admin.EntityFramework.Identity.Entities.Identity;
 using Skoruba.IdentityServer4.Admin.Helpers;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Skoruba.IdentityServer4.Admin
 {
@@ -57,6 +58,12 @@ namespace Skoruba.IdentityServer4.Admin
 
             services.AddMvcLocalization();
             services.AddAuthorizationPolicies();
+
+            
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -76,6 +83,12 @@ namespace Skoruba.IdentityServer4.Admin
             app.UseStaticFiles();
             app.ConfigureAuthentificationServices(env);
             app.ConfigureLocalization();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
 
             app.UseMvc(routes =>
             {

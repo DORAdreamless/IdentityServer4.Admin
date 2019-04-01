@@ -21,6 +21,9 @@
 		<PackageReference Include="Serilog.Settings.Configuration" Version="3.0.1" />
 		<PackageReference Include="Serilog.Sinks.File" Version="4.0.0" />
 		<PackageReference Include="Serilog.Sinks.MSSqlServer" Version="5.1.2" />
+		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="4.0.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="4.0.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="4.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -28,6 +31,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\Skoruba.IdentityServer4.Admin.Api\Skoruba.IdentityServer4.Admin.Api.csproj" />
 	  <ProjectReference Include="..\Skoruba.IdentityServer4.Admin.BusinessLogic.Identity\Skoruba.IdentityServer4.Admin.BusinessLogic.Identity.csproj" />
 	  <ProjectReference Include="..\Skoruba.IdentityServer4.Admin.BusinessLogic.Shared\Skoruba.IdentityServer4.Admin.BusinessLogic.Shared.csproj" />
 	  <ProjectReference Include="..\Skoruba.IdentityServer4.Admin.BusinessLogic\Skoruba.IdentityServer4.Admin.BusinessLogic.csproj" />

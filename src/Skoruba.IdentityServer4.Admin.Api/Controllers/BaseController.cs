@@ -2,10 +2,13 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Skoruba.IdentityServer4.Admin.Api.ExceptionHandling;
 using System.Collections.Generic;
 
 namespace Skoruba.IdentityServer4.Admin.Api.Controllers
 {
+    //[ApiController]
+    [TypeFilter(typeof(ControllerExceptionFilterAttribute))]
     public class BaseController : ControllerBase
     {
         private readonly ILogger<BaseController> _logger;

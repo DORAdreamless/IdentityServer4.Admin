@@ -40,6 +40,7 @@ namespace Skoruba.IdentityServer4.Admin.Api.Controllers
         }
 
         [HttpGet]
+        [Route("/api/Identity/Role")]
         public async Task<IActionResult> Roles(int? page, string search)
         {
             var roles = await _identityService.GetRolesAsync(search, page ?? 1);
@@ -98,7 +99,6 @@ namespace Skoruba.IdentityServer4.Admin.Api.Controllers
         }
 
         [HttpPost]
-        
         public async Task<IActionResult> UserProfile(TUserDto user)
         {
             if (!ModelState.IsValid)

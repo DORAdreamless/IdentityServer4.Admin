@@ -44,7 +44,7 @@ namespace Skoruba.IdentityServer4.Admin.Helpers
             var storeOptions = new ConfigurationStoreOptions();
             services.AddSingleton(storeOptions);
 
-            services.AddDbContext<TContext>(options => options.UseSqlServer(configuration.GetConnectionString(ConfigurationConsts.AdminConnectionStringKey), optionsSql => optionsSql.MigrationsAssembly(migrationsAssembly)));
+            services.AddDbContext<TContext>(options => options.UseMySql(configuration.GetConnectionString(ConfigurationConsts.AdminConnectionStringKey), optionsSql => optionsSql.MigrationsAssembly(migrationsAssembly)));
         }
 
         public static void RegisterDbContextsStaging<TContext>(this IServiceCollection services)
@@ -160,8 +160,10 @@ namespace Skoruba.IdentityServer4.Admin.Helpers
 
             services.AddLocalization(opts => { opts.ResourcesPath = ConfigurationConsts.ResourcesPath; });
 
+
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+               // .AddApiExplorer()
                 .AddViewLocalization(
                     LanguageViewLocationExpanderFormat.Suffix,
                     opts => { opts.ResourcesPath = ConfigurationConsts.ResourcesPath; })
@@ -177,7 +179,7 @@ namespace Skoruba.IdentityServer4.Admin.Helpers
                         new CultureInfo("en")
                     };
 
-                    opts.DefaultRequestCulture = new RequestCulture("en");
+                    opts.DefaultRequestCulture = new RequestCulture("zh");
                     opts.SupportedCultures = supportedCultures;
                     opts.SupportedUICultures = supportedCultures;
                 });

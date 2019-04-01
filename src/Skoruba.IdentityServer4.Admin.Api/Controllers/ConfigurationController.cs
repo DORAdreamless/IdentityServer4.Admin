@@ -13,7 +13,7 @@ using Skoruba.IdentityServer4.Admin.Api.ExceptionHandling;
 namespace Skoruba.IdentityServer4.Admin.Api.Controllers
 {
     [Authorize(Policy = AuthorizationConsts.AdministrationPolicy)]
-    [TypeFilter(typeof(ControllerExceptionFilterAttribute))]
+
     public class ConfigurationController : BaseController
     {
         private readonly IIdentityResourceService<AdminDbContext> _identityResourceService;

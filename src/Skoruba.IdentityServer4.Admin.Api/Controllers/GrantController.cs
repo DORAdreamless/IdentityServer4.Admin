@@ -14,7 +14,6 @@ using Skoruba.IdentityServer4.Admin.EntityFramework.Identity.Entities.Identity;
 namespace Skoruba.IdentityServer4.Admin.Api.Controllers
 {
     [Authorize(Policy = AuthorizationConsts.AdministrationPolicy)]
-    [TypeFilter(typeof(ControllerExceptionFilterAttribute))]
     public class GrantController : BaseController
     {
         private readonly IPersistedGrantAspNetIdentityService<AdminDbContext, UserIdentity, UserIdentityRole, string, UserIdentityUserClaim, UserIdentityUserRole, UserIdentityUserLogin, UserIdentityRoleClaim, UserIdentityUserToken> _persistedGrantService;
